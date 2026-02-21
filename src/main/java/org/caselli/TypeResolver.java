@@ -40,7 +40,7 @@ public final class TypeResolver {
             ParsedVarTag parsed = parseVarTag(tag.getValue());
             if (parsed == null || parsed.typeText.isEmpty()) continue;
 
-            PhpType tagType = covertStringToPhpType(parsed.typeText);
+            PhpType tagType = convertStringToPhpType(parsed.typeText);
 
             if (parsed.variableName != null) {
                 // we found it!
@@ -76,7 +76,7 @@ public final class TypeResolver {
      * @param typeText the type part of the @var tag, e.g. "int", "string|false"
      * @return the corresponding PhpType, or "mixed" if the input is empty or invalid.
      */
-    private static PhpType covertStringToPhpType(String typeText) {
+    private static PhpType convertStringToPhpType(String typeText) {
         String t = typeText.trim();
         if (t.isEmpty()) return TypeFactory.createType("mixed");
 
